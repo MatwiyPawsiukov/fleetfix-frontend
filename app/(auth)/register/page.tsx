@@ -14,6 +14,7 @@ export default function RegisterPage() {
         { name: "password", label: "Пароль", type: "password", autoComplete: "new-password" },
       ]}
       submitLabel="Створити акаунт"
+      submitHref="/profile"
       switchText="Вже маєте акаунт?"
       switchLabel="Увійти"
       switchHref="/login"

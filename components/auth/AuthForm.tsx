@@ -1,16 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Field = { name: string; label: string; type: string; autoComplete: string };
 
 const inputClass =
   "mt-1.5 block w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white";
 
-// Visual-only form: there is no backend yet, so the submit button does nothing.
+// No backend yet: submitting only checks the fields are filled in and moves on to `submitHref`.
 export function AuthForm({
   title,
   text,
   fields,
   submitLabel,
+  submitHref,
   switchText,
   switchLabel,
   switchHref,
@@ -19,16 +23,24 @@ export function AuthForm({
   text: string;
   fields: Field[];
   submitLabel: string;
+  submitHref: string;
   switchText: string;
   switchLabel: string;
   switchHref: string;
 }) {
+  const router = useRouter();
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    router.push(submitHref);
+  }
+
   return (
     <>
       <h1 className="text-2xl font-semibold tracking-tight text-ink dark:text-white">{title}</h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{text}</p>
 
-      <form className="mt-8 space-y-4">
+      <form onSubmit={submit} className="mt-8 space-y-4">
         {fields.map((field) => (
           <label key={field.name} className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             {field.label}
@@ -42,7 +54,7 @@ export function AuthForm({
           </label>
         ))}
         <button
-          type="button"
+          type="submit"
           className="w-full rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-600/30 transition-colors hover:bg-brand-700"
         >
           {submitLabel}

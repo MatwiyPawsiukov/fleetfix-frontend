@@ -13,6 +13,7 @@ export default function LoginPage() {
         { name: "password", label: "Пароль", type: "password", autoComplete: "current-password" },
       ]}
       submitLabel="Увійти"
+      submitHref="/dashboard"
       switchText="Ще немає акаунта?"
       switchLabel="Зареєструвати СТО"
       switchHref="/register"
