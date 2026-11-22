@@ -29,7 +29,7 @@ export function OwnerDashboard() {
     <>
       <PageTitle title={<>Вітаємо, <UserName /></>} text="Огляд роботи СТО за листопад." />
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon="euro" label="Виручка за місяць" value="48 260 €" hint="+12% до жовтня" />
         <StatCard icon="clipboard" label="Закрито замовлень" value="186" hint="+9 за тиждень" />
         <StatCard icon="calendar" label="Завантаження боксів" value="77%" hint="Середнє за тиждень" />
@@ -72,7 +72,21 @@ export function OwnerDashboard() {
       </div>
 
       <Panel title="Останні рахунки" action="Усі рахунки" className="mt-6">
-        <div className="overflow-x-auto">
+        <ul className="divide-y divide-slate-100 sm:hidden dark:divide-slate-800">
+          {invoices.map((inv) => (
+            <li key={inv.no} className="flex items-center gap-3 px-5 py-3">
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium text-ink dark:text-white">{inv.client}</p>
+                <p className="font-mono text-xs text-slate-500 dark:text-slate-400">{inv.no}</p>
+              </div>
+              <div className="flex shrink-0 flex-col items-end gap-1">
+                <span className="text-sm font-medium text-ink dark:text-white">{inv.sum}</span>
+                <Badge tone={inv.tone}>{inv.status}</Badge>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="hidden overflow-x-auto sm:block">
           <table className="w-full text-left text-sm">
             <thead className="text-xs text-slate-500 dark:text-slate-400">
               <tr>

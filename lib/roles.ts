@@ -1,7 +1,10 @@
 import type { IconName } from "@/components/home/icons";
 
-export const roles = ["owner", "receptionist", "mechanic"] as const;
+// Workshop staff work in /dashboard/[role]; a client (car owner) uses the portal at /portal.
+export const staffRoles = ["owner", "receptionist", "mechanic"] as const;
+export const roles = [...staffRoles, "client"] as const;
 
+export type StaffRole = (typeof staffRoles)[number];
 export type Role = (typeof roles)[number];
 
 export type RoleInfo = {
@@ -47,8 +50,23 @@ export const roleInfo: Record<Role, RoleInfo> = {
       { icon: "clock", label: "Мій час" },
     ],
   },
+  client: {
+    label: "Клієнт",
+    description: "Мої авто, запис на сервіс, статус ремонту, кошториси та рахунки.",
+    icon: "car",
+    nav: [],
+  },
 };
 
 export function isRole(value: unknown): value is Role {
   return typeof value === "string" && (roles as readonly string[]).includes(value);
+}
+
+export function isStaffRole(value: unknown): value is StaffRole {
+  return typeof value === "string" && (staffRoles as readonly string[]).includes(value);
+}
+
+/** Where a user with this role lands after login / choosing a profile. */
+export function homePath(role: Role) {
+  return role === "client" ? "/portal" : `/dashboard/${role}`;
 }

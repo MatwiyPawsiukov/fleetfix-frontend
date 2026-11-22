@@ -37,7 +37,7 @@ export function MechanicDashboard() {
     <>
       <PageTitle title={<>Привіт, <UserName /></>} text="Ваші завдання на сьогодні." />
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         <StatCard icon="wrench" label="Завдань сьогодні" value="4" hint="1 в роботі" />
         <StatCard icon="clock" label="Відпрацьовано" value="4 год 20 хв" hint="Із 8 год" />
         <StatCard icon="box" label="Чекаю запчастини" value="1" hint="Прибуде о 14:00" />

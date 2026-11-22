@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@/components/home/icons";
 import { saveProfile, useProfile } from "@/lib/profile";
-import { roleInfo, roles, type Role } from "@/lib/roles";
+import { homePath, roleInfo, roles, type Role } from "@/lib/roles";
 
 const inputClass =
   "mt-1.5 block w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white";
@@ -25,9 +25,9 @@ function Form({ initialName, initialRole, editing }: { initialName: string; init
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) return setError("Вкажіть імʼя.");
-    if (!role) return setError("Оберіть, хто ви в команді.");
+    if (!role) return setError("Оберіть, хто ви.");
     saveProfile({ name: name.trim(), role });
-    router.push(`/dashboard/${role}`);
+    router.push(homePath(role));
   }
 
   return (
@@ -36,7 +36,7 @@ function Form({ initialName, initialRole, editing }: { initialName: string; init
         {editing ? "Ваш профіль" : "Створіть профіль"}
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Оберіть свою роль — від неї залежить, який робочий простір ви побачите.
+        Працюєте в СТО чи ви клієнт? Від цього залежить, який кабінет ви побачите.
       </p>
 
       <form onSubmit={submit} className="mt-8 space-y-6" noValidate>

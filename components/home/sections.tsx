@@ -63,7 +63,7 @@ export function Hero() {
         aria-hidden="true"
         className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_70%)]"
       />
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 pb-24 pt-14 sm:px-8 lg:grid-cols-[1fr_1.15fr] lg:pb-32 lg:pt-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-10 sm:gap-16 sm:px-8 sm:pb-24 sm:pt-14 lg:grid-cols-[1fr_1.15fr] lg:pb-32 lg:pt-20">
         <div>
           <Link
             href="/features"
@@ -134,8 +134,8 @@ export function TrustStrip() {
     <section aria-label="Гарантії" className="border-y border-slate-200 bg-slate-50/60 dark:border-slate-800 dark:bg-slate-900/40">
       <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 py-8 sm:px-8 md:grid-cols-4">
         {items.map((item) => (
-          <li key={item.label} className="flex items-center justify-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400">
-            <Icon name={item.icon} className="size-5 text-slate-400 dark:text-slate-500" />
+          <li key={item.label} className="flex items-center gap-3 text-sm font-medium text-slate-600 md:justify-center dark:text-slate-400">
+            <Icon name={item.icon} className="size-5 shrink-0 text-slate-400 dark:text-slate-500" />
             {item.label}
           </li>
         ))}
@@ -148,7 +148,7 @@ export function TrustStrip() {
 
 export function Problems() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Чому FleetFix"
@@ -156,15 +156,15 @@ export function Problems() {
           text="Загублені заявки, рахунки з помилками й клієнти, які забули про TÜV. FleetFix закриває ці дірки."
         />
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        <div className="mt-10 grid sm:mt-14 gap-4 md:grid-cols-2">
           {problems.map((p) => (
             <div
               key={p.before}
-              className="group grid grid-cols-[1fr_auto_1fr] items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-black/30"
+              className="group flex flex-col gap-3 rounded-2xl sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-4 border border-slate-200 bg-white p-5 transition-shadow hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-black/30"
             >
               <p className="text-sm text-slate-400 line-through decoration-slate-300 dark:text-slate-500 dark:decoration-slate-600">{p.before}</p>
-              <span className="grid size-8 place-items-center rounded-full bg-brand-50 text-brand-600 transition-transform dark:bg-brand-500/15 dark:text-brand-300 group-hover:translate-x-0.5">
-                <Icon name="arrow-right" className="size-4" />
+              <span className="grid size-8 place-items-center rounded-full bg-brand-50 text-brand-600 transition-transform dark:bg-brand-500/15 dark:text-brand-300 sm:group-hover:translate-x-0.5">
+                <Icon name="arrow-right" className="size-4 rotate-90 sm:rotate-0" />
               </span>
               <p className="text-sm font-medium text-ink dark:text-slate-100">{p.after}</p>
             </div>
@@ -179,7 +179,7 @@ export function Problems() {
 
 export function Workflow({ titleAs }: TitleProps = {}) {
   return (
-    <section id="workflow" className="relative isolate overflow-hidden bg-ink py-24 sm:py-28 dark:border-y dark:border-slate-800 dark:bg-slate-900/60">
+    <section id="workflow" className="relative isolate overflow-hidden bg-ink py-16 sm:py-24 lg:py-28 dark:border-y dark:border-slate-800 dark:bg-slate-900/60">
       <div
         aria-hidden="true"
         className="bg-grid-dark absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
@@ -255,7 +255,7 @@ export function Workflow({ titleAs }: TitleProps = {}) {
 
 export function Features({ titleAs }: TitleProps = {}) {
   return (
-    <section id="features" className="py-24 sm:py-28">
+    <section id="features" className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           as={titleAs}
@@ -264,7 +264,7 @@ export function Features({ titleAs }: TitleProps = {}) {
           text="Від першого дзвінка до експорту для Steuerberater — без зайвих програм і табличок."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid sm:mt-14 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
             <article
               key={f.title}
@@ -294,7 +294,7 @@ export function Features({ titleAs }: TitleProps = {}) {
 
 export function Roles() {
   return (
-    <section id="roles" className="bg-slate-50 py-24 sm:py-28 dark:bg-slate-900/40">
+    <section id="roles" className="bg-slate-50 py-16 sm:py-24 lg:py-28 dark:bg-slate-900/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Для кого"
@@ -302,7 +302,7 @@ export function Roles() {
           text="Ролі перевіряються на сервері: механік не бачить рахунки й звіти, а власник — бачить усе."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid sm:mt-14 gap-6 lg:grid-cols-3">
           {roles.map((role) => (
             <article
               key={role.id}
@@ -343,8 +343,8 @@ export function CustomerMessages() {
   ];
 
   return (
-    <section className="py-24 sm:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
+    <section className="py-16 sm:py-24 lg:py-28">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:gap-16 sm:px-8 lg:grid-cols-2">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Для ваших клієнтів</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance text-ink sm:text-4xl dark:text-white">
@@ -438,13 +438,13 @@ const exploreCards = [
 
 export function Explore() {
   return (
-    <section className="bg-slate-50 py-24 sm:py-28 dark:bg-slate-900/40">
+    <section className="bg-slate-50 py-16 sm:py-24 lg:py-28 dark:bg-slate-900/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Дізнайтеся більше"
           title="Подивіться, як FleetFix працює у вашій майстерні"
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid sm:mt-14 gap-5 md:grid-cols-3">
           {exploreCards.map((card) => (
             <Link
               key={card.href}
@@ -472,7 +472,7 @@ export function Explore() {
 
 export function Pricing({ titleAs }: TitleProps = {}) {
   return (
-    <section id="pricing" className="bg-slate-50 py-24 sm:py-28 dark:bg-slate-900/40">
+    <section id="pricing" className="bg-slate-50 py-16 sm:py-24 lg:py-28 dark:bg-slate-900/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           as={titleAs}
@@ -481,11 +481,11 @@ export function Pricing({ titleAs }: TitleProps = {}) {
           text="Гроші клієнта йдуть напряму на ваш рахунок. Ви платите лише фіксовану суму на місяць."
         />
 
-        <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-10 grid sm:mt-14 max-w-4xl gap-6 md:grid-cols-2">
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className={`relative flex flex-col rounded-3xl p-8 ${
+              className={`relative flex flex-col rounded-3xl p-6 sm:p-8 ${
                 plan.featured
                   ? "bg-ink text-white shadow-2xl shadow-brand-900/20 ring-1 ring-ink dark:bg-slate-900 dark:ring-brand-500/50"
                   : "border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 dark:text-white"
@@ -553,12 +553,12 @@ export function Pricing({ titleAs }: TitleProps = {}) {
 
 export function Faq({ titleAs }: TitleProps = {}) {
   return (
-    <section id="faq" className="py-24 sm:py-28">
+    <section id="faq" className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <SectionHeading as={titleAs} eyebrow="Питання" title="Часті запитання" />
         <div className="mt-12 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900">
           {faq.map((item) => (
-            <details key={item.q} className="group px-6 [&_summary::-webkit-details-marker]:hidden">
+            <details key={item.q} className="group px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-medium text-ink dark:text-white">
                 {item.q}
                 <span className="grid size-7 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-500 transition-transform group-open:rotate-45 dark:bg-slate-800 dark:text-slate-400">
@@ -580,7 +580,7 @@ export function Faq({ titleAs }: TitleProps = {}) {
 
 export function CallToAction() {
   return (
-    <section id="start" className="px-5 pb-24 sm:px-8">
+    <section id="start" className="px-5 pb-16 sm:px-8 sm:pb-24">
       <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-3xl bg-linear-to-br from-brand-600 via-brand-700 to-violet-700 px-6 py-16 text-center shadow-2xl shadow-brand-900/20 sm:px-16 sm:py-20">
         <div
           aria-hidden="true"
@@ -617,8 +617,8 @@ export function CallToAction() {
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.5fr_repeat(3,1fr)]">
-        <div>
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 sm:grid-cols-3 sm:px-8 sm:py-14 md:grid-cols-[1.5fr_repeat(3,1fr)]">
+        <div className="col-span-2 sm:col-span-3 md:col-span-1">
           <Link href="/" aria-label="FleetFix — на головну" className="inline-block">
             <Logo />
           </Link>

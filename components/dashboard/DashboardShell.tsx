@@ -7,18 +7,18 @@ import { Icon } from "@/components/home/icons";
 import { Logo } from "@/components/home/Logo";
 import { ThemeToggle } from "@/components/home/ThemeToggle";
 import { clearProfile, useProfile } from "@/lib/profile";
-import { roleInfo, type Role } from "@/lib/roles";
+import { homePath, roleInfo, type StaffRole } from "@/lib/roles";
 
 // Shows a role's workspace only to a user whose profile has that role:
 // no profile → /profile, another role → that role's own dashboard.
-export function DashboardShell({ role, children }: { role: Role; children: React.ReactNode }) {
+export function DashboardShell({ role, children }: { role: StaffRole; children: React.ReactNode }) {
   const router = useRouter();
   const profile = useProfile();
   const allowed = profile?.role === role;
 
   useEffect(() => {
     if (profile === null) router.replace("/profile");
-    else if (profile && profile.role !== role) router.replace(`/dashboard/${profile.role}`);
+    else if (profile && profile.role !== role) router.replace(homePath(profile.role));
   }, [profile, role, router]);
 
   if (!allowed) {
@@ -81,9 +81,9 @@ export function DashboardShell({ role, children }: { role: Role; children: React
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white px-5 sm:px-8 dark:border-slate-800 dark:bg-slate-900">
-          <div className="flex items-center gap-3">
-            <Link href="/" aria-label="FleetFix — на головну" className="lg:hidden">
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-3 border-b border-slate-200 bg-white/90 px-4 backdrop-blur-lg sm:px-8 dark:border-slate-800 dark:bg-slate-900/90">
+          <div className="flex min-w-0 items-center gap-3">
+            <Link href="/" aria-label="FleetFix — на головну" className="shrink-0 lg:hidden">
               <Logo />
             </Link>
             <span className="hidden items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 sm:inline-flex dark:bg-brand-500/10 dark:text-brand-300">
@@ -91,7 +91,7 @@ export function DashboardShell({ role, children }: { role: Role; children: React
               {info.label}
             </span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex shrink-0 items-center gap-0.5">
             <button
               type="button"
               aria-label="Сповіщення"
@@ -102,20 +102,45 @@ export function DashboardShell({ role, children }: { role: Role; children: React
             <ThemeToggle />
             <Link
               href="/profile"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 lg:hidden dark:text-slate-200 dark:hover:bg-slate-800"
+              aria-label={`Профіль: ${profile.name}`}
+              title="Профіль"
+              className="ml-1 grid size-9 place-items-center rounded-full bg-brand-600 text-sm font-semibold text-white transition-colors hover:bg-brand-700 lg:hidden"
             >
-              Профіль
+              {profile.name.charAt(0).toUpperCase()}
             </Link>
             <button
               type="button"
               onClick={logout}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+              aria-label="Вийти"
+              title="Вийти"
+              className="inline-flex items-center gap-2 rounded-lg p-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 sm:px-3 dark:text-slate-200 dark:hover:bg-slate-800"
             >
-              Вийти
+              <Icon name="logout" className="size-5" />
+              <span className="hidden sm:inline">Вийти</span>
             </button>
           </div>
         </header>
-        <main className="flex-1 px-5 py-8 sm:px-8">{children}</main>
+        {/* Phones / tablets: the sidebar is hidden, so show the sections as a scrollable strip. */}
+        <nav aria-label="Меню кабінету" className="border-b border-slate-200 bg-white lg:hidden dark:border-slate-800 dark:bg-slate-900">
+          <ul className="flex gap-1 overflow-x-auto px-4 py-2 [scrollbar-width:none] sm:px-8">
+            {info.nav.map((item, i) => (
+              <li key={item.label} className="shrink-0">
+                <span
+                  aria-current={i === 0 ? "page" : undefined}
+                  className={`flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ${
+                    i === 0
+                      ? "bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-300"
+                      : "text-slate-400 dark:text-slate-500"
+                  }`}
+                >
+                  <Icon name={item.icon} className="size-4" />
+                  {item.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <main className="flex-1 px-4 py-6 sm:px-8 sm:py-8">{children}</main>
       </div>
     </div>
   );

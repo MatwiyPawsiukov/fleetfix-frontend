@@ -40,6 +40,13 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
+/* Decorative glows bleed past the viewport edge; clip them instead of
+   letting the page scroll sideways on phones (clip keeps sticky working). */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   background: #ffffff;
   color: var(--color-ink);

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "@/lib/profile";
+import { homePath } from "@/lib/roles";
 
 export function DashboardRedirect() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export function DashboardRedirect() {
 
   useEffect(() => {
     if (profile === null) router.replace("/profile");
-    else if (profile) router.replace(`/dashboard/${profile.role}`);
+    else if (profile) router.replace(homePath(profile.role));
   }, [profile, router]);
 
   return (

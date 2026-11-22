@@ -22,7 +22,15 @@ export type IconName =
   | "clock"
   | "euro"
   | "sun"
-  | "moon";
+  | "moon"
+  | "car"
+  | "home"
+  | "logout"
+  | "plus"
+  | "phone"
+  | "pin"
+  | "chevron-right"
+  | "alert";
 
 const paths: Record<IconName, ReactNode> = {
   calendar: (
@@ -127,6 +135,43 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
   moon: <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />,
+  car: (
+    <>
+      <path d="M4 16.5v-4l2-5.5a1.5 1.5 0 0 1 1.4-1h9.2a1.5 1.5 0 0 1 1.4 1l2 5.5v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z" />
+      <path d="M4 12.5h16M7 17.5v2M17 17.5v2" />
+      <circle cx="7.5" cy="14.8" r=".6" />
+      <circle cx="16.5" cy="14.8" r=".6" />
+    </>
+  ),
+  home: (
+    <>
+      <path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-9.5Z" />
+      <path d="M9.5 21v-6h5v6" />
+    </>
+  ),
+  logout: (
+    <>
+      <path d="M14 4.5h4.5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H14" />
+      <path d="M10 8l-4 4 4 4M6 12h10" />
+    </>
+  ),
+  plus: <path d="M12 5v14M5 12h14" />,
+  phone: (
+    <path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a10.5 10.5 0 0 0 4.8 4.8l1.4-2.2 4.3 1.7V17a2.5 2.5 0 0 1-2.7 2.5A15 15 0 0 1 2.5 6.2 2.5 2.5 0 0 1 5 3.5Z" />
+  ),
+  pin: (
+    <>
+      <path d="M12 21s7-5.6 7-11.5a7 7 0 0 0-14 0C5 15.4 12 21 12 21Z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </>
+  ),
+  "chevron-right": <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />,
+  alert: (
+    <>
+      <path d="M10.3 4.2 2.8 17.5A2 2 0 0 0 4.5 20.5h15a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z" />
+      <path d="M12 9.5v4.5M12 17.2v.1" />
+    </>
+  ),
 };
 
 type IconProps = SVGProps<SVGSVGElement> & { name: IconName };

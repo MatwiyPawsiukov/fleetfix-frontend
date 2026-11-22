@@ -21,6 +21,7 @@ export const footerColumns: {
       { label: "Як це працює", href: "/how-it-works" },
       { label: "Для кого", href: "/features#roles" },
       { label: "Тарифи", href: "/pricing" },
+      { label: "Кабінет клієнта", href: "/portal" },
     ],
   },
   {

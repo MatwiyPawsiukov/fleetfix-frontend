@@ -36,7 +36,7 @@ export function ReceptionistDashboard() {
         </button>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon="inbox" label="Нові заявки" value="3" hint="Без відповіді" />
         <StatCard icon="calendar" label="Записів сьогодні" value="12" hint="2 вільні слоти" />
         <StatCard icon="check" label="Готові до видачі" value="2" hint="Клієнтів повідомлено" />
@@ -95,7 +95,7 @@ export function ReceptionistDashboard() {
               <span className="text-sm font-medium text-ink dark:text-white">{p.sum}</span>
               <button
                 type="button"
-                className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-emerald-700"
+                className="w-full rounded-lg bg-emerald-600 px-3 py-2 sm:w-auto sm:py-1.5 text-xs font-semibold text-white transition-colors hover:bg-emerald-700"
               >
                 Видати й виставити рахунок
               </button>

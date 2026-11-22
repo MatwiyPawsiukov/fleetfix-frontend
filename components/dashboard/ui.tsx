@@ -4,8 +4,8 @@ import { Icon, type IconName } from "@/components/home/icons";
 
 export function PageTitle({ title, text }: { title: React.ReactNode; text: string }) {
   return (
-    <div className="mb-8">
-      <h1 className="text-2xl font-semibold tracking-tight text-ink dark:text-white">{title}</h1>
+    <div className="mb-6 sm:mb-8">
+      <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-ink dark:text-white">{title}</h1>
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{text}</p>
     </div>
   );
@@ -13,12 +13,12 @@ export function PageTitle({ title, text }: { title: React.ReactNode; text: strin
 
 export function StatCard({ icon, label, value, hint }: { icon: IconName; label: string; value: string; hint?: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-      <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-        <Icon name={icon} className="size-4" />
+    <div className="h-full rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex items-start gap-2 text-xs text-slate-500 sm:text-sm dark:text-slate-400">
+        <Icon name={icon} className="mt-px size-4 shrink-0" />
         {label}
       </div>
-      <p className="mt-3 text-2xl font-semibold tracking-tight text-ink dark:text-white">{value}</p>
+      <p className="mt-2 text-xl font-semibold tracking-tight text-ink sm:mt-3 sm:text-2xl dark:text-white">{value}</p>
       {hint && <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hint}</p>}
     </div>
   );
@@ -39,7 +39,7 @@ export function Panel({
     <section
       className={`rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 ${className}`}
     >
-      <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 dark:border-slate-800">
+      <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 dark:border-slate-800">
         <h2 className="text-sm font-semibold text-ink dark:text-white">{title}</h2>
         {action && <span className="text-xs font-semibold text-brand-600 dark:text-brand-400">{action}</span>}
       </div>
