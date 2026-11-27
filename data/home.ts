@@ -180,7 +180,7 @@ export const plans = [
   },
   {
     name: "Pro",
-    price: 89,
+    price: 40,
     staff: "до 15 працівників",
     description: "Для СТО, що хоче заробляти на повторних візитах.",
     features: [
@@ -192,6 +192,20 @@ export const plans = [
     ],
     featured: true,
   },
+   {
+    name: "Ultimate",
+    price: 80,
+    staff: "Безліміта кількість продавців",
+    description: "Для великих корпорацій по Автівкам",
+    features: [
+      "Усе з Pro",
+      "Календар по боксах",
+      "Замовлення та кошториси",
+      "Рахунки за правилами GoBD",
+      "Екран механіка",
+    ],
+    featured: false,
+  }
 ] as const;
 
 export const faq = [

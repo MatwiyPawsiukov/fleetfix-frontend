@@ -481,7 +481,7 @@ export function Pricing({ titleAs }: TitleProps = {}) {
           text="Гроші клієнта йдуть напряму на ваш рахунок. Ви платите лише фіксовану суму на місяць."
         />
 
-        <div className="mx-auto mt-10 grid sm:mt-14 max-w-4xl gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-10 grid sm:mt-14 max-w-6xl gap-6 md:grid-cols-3 lg:grid-cols-3">
           {plans.map((plan) => (
             <article
               key={plan.name}
